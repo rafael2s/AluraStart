@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1607636777 source:c:\users\rssilva\desktop\cursos\alurastart\logicacomputacional\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+

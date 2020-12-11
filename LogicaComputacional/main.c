@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <locale.h>
 
+#define MAXIMO_DE_TENTATIVAS 5
+
 int main(){
 
     setlocale(LC_ALL, "Portuguese");
@@ -15,9 +17,10 @@ int main(){
     int numeroSecreto = 42;
     //printf("O número secreto é %d.\n", numeroSecreto);
 
-    for(int tentativa = 1; tentativa <= 3; tentativa++){
 
-        printf("\nTentativa %d de 3\n", tentativa);
+    for(int tentativa = 1; tentativa <= MAXIMO_DE_TENTATIVAS; tentativa++){
+
+        printf("\nTentativa %d de %d\n", tentativa, MAXIMO_DE_TENTATIVAS);
 
         int chute;
         printf("Qual é o seu chute? ");
@@ -26,20 +29,15 @@ int main(){
         printf("O seu chute é %d.\n", chute);
 
         int acertou = (chute == numeroSecreto);
+        int maior = (numeroSecreto > chute);
 
         if (acertou) {
             printf("Parabéns! Você acertou!\n");
             break;
+        } else if(maior) {
+            printf("\nO número secreto é maior que %d.\n", chute);
         } else {
-            printf("Que pena, você errou dessa vez!\n");
-            printf("Não desanime, tente novamente!\n");
-
-            int maior = (numeroSecreto > chute);
-            if(maior) {
-                printf("O número secreto é maior que %d.\n", chute);
-            } else {
-                printf("O número secreto é menor que %d.\n", chute);
-            }
+            printf("\nO número secreto é menor que %d.\n", chute);
         }
     }
 

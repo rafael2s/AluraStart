@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <locale.h>
 
-#define PARA_SEMPRE 1
+#define JOGANDO 1
+#define ACABOU 0
+
 
 int main(){
 
@@ -18,7 +20,10 @@ int main(){
     //printf("O número secreto é %d.\n", numeroSecreto);
 
     int tentativa = 1;
-    while(PARA_SEMPRE){
+    double pontos = 1000;
+    int state = JOGANDO;
+
+    while(state == JOGANDO){
 
         printf("\nTentativa %d\n", tentativa);
 
@@ -34,20 +39,26 @@ int main(){
         printf("O seu chute é %d.\n", chute);
 
         int acertou = (chute == numeroSecreto);
-        int maior = (numeroSecreto > chute);
 
         if (acertou) {
             printf("Parabéns! Você acertou!\n");
-            break;
-        } else if(maior) {
+            state = ACABOU;
+            continue;
+        }
+        int maior = (numeroSecreto > chute);
+        if(maior) {
             printf("\nO número secreto é maior que %d.\n", chute);
         } else {
             printf("\nO número secreto é menor que %d.\n", chute);
         }
+
+        double pontosPerdidos = abs(chute - numeroSecreto) / 2.0;
+
+        pontos = pontos - pontosPerdidos;
         tentativa++;
     }
 
-    printf("Fim do jogo com %d tentativas!\n", tentativa);
+    printf("Fim do jogo com %d tentativas e %.2f pontos!\n", tentativa, pontos);
 
     return 0;
 }

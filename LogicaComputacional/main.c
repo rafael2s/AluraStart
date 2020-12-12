@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <time.h>
 
 #define JOGANDO 1
 #define ACABOU 0
@@ -10,13 +11,29 @@ int main(){
 
     setlocale(LC_ALL, "Portuguese");
 
+    int segundos = time(0);
+    srand(segundos);
+
     // Imprime mensagem de boas vindas
-    printf("******************************************\n");
-    printf("* Bem-vindo ao nosso jogo de adivinhação *\n");
-    printf("******************************************\n");
+
+    printf("`         `               -|      `      |-         `\n");
+    printf("      -|     `        `   [-_-_-_-_-_-_-_-]    `             |- `\n");
+    printf("      [-_-_-_-_-]   `      |             |   `  `   [-_-_-_-_-]\n");
+    printf("       | o   o |           [  0   0   0  ]  `        | o   o |   `\n");
+    printf("`       |     |    -|       |           |    `  |-    |     |\n");
+    printf(" `      |     |_-___-___-___-|         |-___-___-___-_|     |\n");
+    printf("    `   |  o  ]              [    0    ]              [  o  |\n");
+    printf("        |     ]   o   o   o  [ _______ ]  o   o   o   [     |----__________\n");
+    printf("_____----- |     ]              [ ||||||| ]              [     |\n");
+    printf("        |     ]              [ ||||||| ]              [     |\n");
+    printf("    _-_-|_____]--------------[_|||||||_]--------------[_____|-_-_\n");
+    printf("   ( (__________------------_____________-------------_________) )\n");
+    printf("******************************************************************\n");
+    printf("************* Bem-vindo ao nosso jogo de adivinhação *************\n");
+    printf("******************************************************************\n");
 
     // Jogo
-    int numeroSecreto = 42;
+    int numeroSecreto = rand() % 100 + 1;
     //printf("O número secreto é %d.\n", numeroSecreto);
 
     int tentativa = 1;

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 
-#define MAXIMO_DE_TENTATIVAS 5
+#define PARA_SEMPRE 1
 
 int main(){
 
@@ -17,14 +17,19 @@ int main(){
     int numeroSecreto = 42;
     //printf("O número secreto é %d.\n", numeroSecreto);
 
+    int tentativa = 1;
+    while(PARA_SEMPRE){
 
-    for(int tentativa = 1; tentativa <= MAXIMO_DE_TENTATIVAS; tentativa++){
-
-        printf("\nTentativa %d de %d\n", tentativa, MAXIMO_DE_TENTATIVAS);
+        printf("\nTentativa %d\n", tentativa);
 
         int chute;
         printf("Qual é o seu chute? ");
         scanf("%d", &chute);
+
+        if(chute < 1 || chute > 100) {
+            printf("O seu chute deve estar entre 1 e 100.\n");
+            continue;
+        }
 
         printf("O seu chute é %d.\n", chute);
 
@@ -39,9 +44,10 @@ int main(){
         } else {
             printf("\nO número secreto é menor que %d.\n", chute);
         }
+        tentativa++;
     }
 
-    printf("Fim do jogo!\n");
+    printf("Fim do jogo com %d tentativas!\n", tentativa);
 
     return 0;
 }
